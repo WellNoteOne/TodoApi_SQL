@@ -14,9 +14,11 @@ h1 {
 #todoInput {
   padding: 10px;
   width: 250px;
+  max-width: 100%;
   border: 1px solid #ccc;
   border-radius: 6px;
   margin-bottom: 10px;
+  box-sizing: border-box;
 }
 
 button {
@@ -27,6 +29,7 @@ button {
   color: white;
   cursor: pointer;
   transition: 0.2s;
+  box-sizing: border-box;
 }
 
 button:hover {
@@ -38,6 +41,7 @@ ul {
   padding: 0;
   margin-top: 20px;
   max-width: 400px;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
 }
@@ -51,6 +55,7 @@ li {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap; /* важно для маленьких экранов */
 }
 
 li span {
@@ -85,18 +90,10 @@ li button:hover {
     padding: 10px;
   }
 
-  #todoInput {
-    width: 100%;
-    margin-bottom: 8px;
-  }
-
+  #todoInput,
   button {
     width: 100%;
-    margin-bottom: 12px;
-  }
-
-  ul {
-    max-width: 100%;
+    margin-bottom: 8px;
   }
 
   li {
@@ -104,8 +101,13 @@ li button:hover {
     align-items: flex-start;
   }
 
-  li .status {
+  li .status,
+  li button {
     margin-top: 5px;
     font-size: 0.9em;
+  }
+
+  ul {
+    padding: 0 10px;
   }
 }
