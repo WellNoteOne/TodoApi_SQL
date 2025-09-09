@@ -1,10 +1,11 @@
 
-GET http://localhost:5254/api/todoitems
+GET https://sugaiapi.azurewebsites.net/api/todoitems
 ###
-POST http://localhost:5254/api/todoitems
+POST https://sugaiapi.azurewebsites.net/api/todoitems
 Content-Type: application/json
 
 {
-  "name": "ASP.NET Jatko tehtävä",
+  "name": "Web Api ready",
   "isComplete": true
 }
+
