@@ -7,13 +7,19 @@ async function loadTodos() {
   list.innerHTML = "";
   todos.forEach((todo) => {
     const li = document.createElement("li");
-    li.textContent = `${todo.name} - ${todo.isComplete ? "✅" : "❌"}`;
+    li.innerHTML = `
+            <span>${todo.name}</span>
+            <button onclick="toggleTodo(${todo.id}, ${todo.isComplete})">
+                ${todo.isComplete ? "✅ Done" : "❌ Not done"}
+            </button>
+        `;
     list.appendChild(li);
   });
 }
 
 async function addTodo() {
   const input = document.getElementById("todoInput");
+  if (!input.value.trim()) return;
   const newTodo = { name: input.value, isComplete: false };
   await fetch(apiUrl, {
     method: "POST",
@@ -21,6 +27,24 @@ async function addTodo() {
     body: JSON.stringify(newTodo),
   });
   input.value = "";
+  loadTodos();
+}
+
+async function toggleTodo(id, currentStatus) {
+  const response = await fetch(`${apiUrl}/${id}`);
+  const todo = await response.json();
+
+  const updatedTodo = {
+    ...todo,
+    isComplete: !currentStatus,
+  };
+
+  await fetch(`${apiUrl}/${id}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(updatedTodo),
+  });
+
   loadTodos();
 }
 

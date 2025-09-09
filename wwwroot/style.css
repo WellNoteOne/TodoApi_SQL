@@ -16,7 +16,7 @@ h1 {
   width: 250px;
   border: 1px solid #ccc;
   border-radius: 6px;
-  margin-right: 5px;
+  margin-bottom: 10px;
 }
 
 button {
@@ -50,6 +50,7 @@ li {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 li span {
@@ -59,6 +60,52 @@ li span {
 li .status {
   color: green;
 }
+
 li .status.incomplete {
   color: red;
+}
+
+li button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9em;
+  padding: 5px 10px;
+  border-radius: 6px;
+  transition: 0.2s;
+}
+
+li button:hover {
+  background: #eee;
+}
+
+/* 📱 Адаптив для телефонов */
+@media (max-width: 600px) {
+  body {
+    padding: 10px;
+  }
+
+  #todoInput {
+    width: 100%;
+    margin-bottom: 8px;
+  }
+
+  button {
+    width: 100%;
+    margin-bottom: 12px;
+  }
+
+  ul {
+    max-width: 100%;
+  }
+
+  li {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  li .status {
+    margin-top: 5px;
+    font-size: 0.9em;
+  }
 }
