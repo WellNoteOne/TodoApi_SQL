@@ -1,24 +1,28 @@
 body {
   font-family: Arial, sans-serif;
-  background: #f4f6f9;
+  background: #45484d;
   margin: 0;
   padding: 20px;
-  color: #333;
+  color: #dcdcdc;
 }
 
 h1 {
   text-align: center;
-  color: #444;
+  color: #f2f3f4;
 }
 
 #todoInput {
   padding: 10px;
   width: 250px;
+  background-color: #3b3b3f;
   max-width: 100%;
-  border: 1px solid #ccc;
+  border: 1px solid #74717d;
   border-radius: 6px;
-  margin-bottom: 10px;
+
   box-sizing: border-box;
+}
+#todoInput::placeholder {
+  color: #757575;
 }
 
 button {
@@ -36,6 +40,14 @@ button:hover {
   background: #005fa3;
 }
 
+.input-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
 ul {
   list-style: none;
   padding: 0;
@@ -67,7 +79,7 @@ li .status {
 }
 
 li .status.incomplete {
-  color: red;
+  color: #4f3534;
 }
 
 li button {
@@ -84,16 +96,19 @@ li button:hover {
   background: #eee;
 }
 
-/* 📱 Адаптив для телефонов */
 @media (max-width: 600px) {
   body {
     padding: 10px;
   }
 
+  .input-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
   #todoInput,
   button {
     width: 100%;
-    margin-bottom: 8px;
   }
 
   li {
@@ -101,7 +116,6 @@ li button:hover {
     align-items: flex-start;
   }
 
-  li .status,
   li button {
     margin-top: 5px;
     font-size: 0.9em;
